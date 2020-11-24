@@ -8,7 +8,7 @@ class Api::V1::ListingsController < ApplicationController
     render json: @listings
   end
 
-  # GET /listing/:id
+  # GET /listings/:id
   def show
     @listing = Listing.find(params[:id])
     render json: @listing
@@ -34,7 +34,7 @@ class Api::V1::ListingsController < ApplicationController
       render json: { error: 'Unable to update Listing.' }, status: 400
     end
 
-    # DELETE /users/:id
+    # DELETE /listings/:id
     def destroy 
       @listing = Listing.find(params[:id])
       if @listing 
@@ -48,7 +48,7 @@ class Api::V1::ListingsController < ApplicationController
     private 
 
     def listing_params
-      params.require(:company).permit(:job_title, :company, :location, :summary, :url)
+      params.permit(:job_title, :company, :location, :summary, :url)
     end
 
   end
